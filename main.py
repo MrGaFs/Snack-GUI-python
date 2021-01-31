@@ -82,7 +82,8 @@ class Snake(tk.Canvas):
 
     def move_snake(self):
         headX, headY = self.snake_positions[0]
-
+        new_head_position : int
+        new_head_position = 0
         if self.direction == "Left":
             new_head_position = (
                 headX - MOVE_INCREMENT, headY)
@@ -103,6 +104,14 @@ class Snake(tk.Canvas):
 
     def on_key_press(self, e):
         new_direction = e.keysym
+        mp = {
+            'w':'Up',
+            's':'Down',
+            'a':'Left',
+            'd':'Right'
+        }
+        if new_direction in mp:
+            new_direction = mp[new_direction] 
 
         all_directions = ("Up", "Down", "Left", "Right")
         opposites = ({"Up", "Down"}, {"Left", "Right"})
